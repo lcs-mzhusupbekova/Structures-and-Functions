@@ -21,11 +21,20 @@ import Foundation
  Type the code that you see above. Then run the playground to try it out.
  */
 // Define the function here
+/// calculates the distance between two points in a Cartesian plane
+///
+/// - Parameters:
+///   - fromX: x first point
+///   - fromY: y first point
+///   - toX: x2 second point
+///   - toY: y2 second point
+/// - Returns: the distance between first and second point
 func distance ( fromX : Double, fromY: Double, toX: Double, toY: Double) -> Double {
     return sqrt(pow(fromX-toX,2) + pow(fromY-toY,2))
 }
 print (
 distance ( fromX : 0, fromY: 0, toX: 3, toY: 4))
+
 
 
 // Now invoke the function to calculate the distance between (0, 0) and (3, 4)
