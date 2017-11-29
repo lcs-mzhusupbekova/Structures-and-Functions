@@ -74,3 +74,56 @@ func getSlopeOfPerpendicularLine(from givenLine: Line) -> Slope {
 //get the perpendicular slope ( the slope of the new road from the cabin to the existing road)
 let perpendicularSlope = getSlopeOfPerpendicularLine(from: existingRoad)
 
+func getVerticalIntercept (from p: Point,onLineWith m: Slope) ->Double {
+//    get the slope as a decimal
+     let mAsDecimal = m.rise / m.run
+//    b= y-m *x
+   return p.y - mAsDecimal * p.x
+
+    }
+
+let perpendicularLineVerticalIntercept = getVerticalIntercept(from: cabinSite, onLineWith: perpendicularSlope)
+
+//define the equation ofthe new line ( the new road that needs to be built)
+
+let newRoad = Line(slope:perpendicularSlope, verticalIntercept: perpendicularLineVerticalIntercept)
+
+
+/// gets the point where the two lines in a Cartesian plane intersect
+///
+/// - Parameters:
+///   - first: the first line
+///   - second: the second line
+/// - Returns: the point of intersection
+func getPointOfIntersection( between first: Line, and second: Line) ->Point {
+   
+//    reminder: x= ( b1-b2) / (m2-m1)
+    
+// get the vertical intercept difference
+    let verticalInterceptDifference = first.verticalIntercept - second.verticalIntercept
+    
+//    get the slope of difference
+    
+    let slopeDifference = second.slope.rise / second.slope.run - first.slope.rise / first.slope.run
+    
+//     get the actual x-value (abscissa)
+    
+    let x = verticalInterceptDifference / slopeDifference
+    
+//        get the actual y-value (substitution) (ordinate)
+//    y = sl*x+b1
+    
+    let y = first.slope.rise / first.slope.run * x + first.verticalIntercept
+//    return the point of the intersection
+    
+    return Point(x: x, y: y)
+    
+    }
+        
+//invoke the function to get the point of intersection
+getPointOfIntersection(between: existingRoad, and: newRoad)
+
+
+
+
+
